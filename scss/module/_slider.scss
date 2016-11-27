@@ -1,0 +1,152 @@
+// main: /xampp/htdocs/multiszablon/scss/style.scss
+
+/*
+* @nazwa Slidery
+* @sekcja Moduły
+* @opis
+*  Range slidery, grid slidery i inne, wszystkie oddzielone --
+*/
+.m-slider {
+    $root: &;
+    &__plus {
+        @include transition(transform .2s linear);
+        display: inline-block;
+        vertical-align: middle;
+        background: #000;
+        border-radius: 3px;
+        padding: 9px 10px 8px 11px;
+        margin-left: -2px;
+        font-size: 17px;
+
+        &:hover {
+            @include transform(scale(1.04));
+        }
+
+        .fa {
+            color: #fef200;
+        }
+
+    }
+
+    &__minus {
+        @include transition(transform .2s linear);
+        display: inline-block;
+        vertical-align: middle;
+        background: #000;
+        border-radius: 3px;
+        padding: 9px 10px 8px 11px;
+        margin-left: -2px;
+        font-size: 17px;
+
+        &:hover {
+            @include transform(scale(1.04));
+        }
+
+        .fa {
+            color: #fef200;
+        }
+    }
+
+
+    &--price {
+        font-size: 0;
+        width: 68%;
+        display: inline-block;
+        vertical-align: middle;
+
+        #{$root}__content {
+            display: inline-block;
+            vertical-align: middle;
+            width: 79.5%;
+            margin-left: 3px;
+            margin-right: 5px;
+            margin-top: -2px;
+            position: relative;
+
+            #{$root}__element {
+                height: 8px;
+                background: #000;
+                border-radius: 0;
+                border: 0;
+
+                .ui-slider {
+
+                    &-range {
+                        width: 0%;
+                        background: rgb(0, 0, 0);
+                        border-radius: 0px;
+                        border: 0px;
+                    }
+
+                    &-handle {
+                        transition: left .5s cubic-bezier(0.39, 0.575, 0.565, 1);
+                        width: 12px;
+                        border: 2px solid rgb(0, 0, 0);
+                        background: rgb(254, 242, 0);
+                        height: 26px;
+                        border-radius: 4px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        cursor: pointer;
+                    }
+
+                }
+            }
+        }
+
+        #{$root}__indicator {
+            @include transition(transform .4s cubic-bezier(0.39, 0.575, 0.565, 1));
+            width: 12px;
+            border: 2px solid #000;
+            background: #fef200;
+            height: 26px;
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            border-radius: 4px;
+        }
+
+    }
+
+
+    &--range {
+
+        .ui-slider {
+
+            &-range {
+                background: #0094e0;
+            }
+
+            &-handle {
+                background: $color-mine-shaft;
+                border: 0;
+                height: 1.4rem;
+                width: 1.4rem;
+                border-radius: 3px;
+                top: -4px;
+                margin-left: 0;
+                cursor: pointer;
+
+                &:last-child {
+                    background: $color-cerulean;
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+
+            }
+
+        }
+
+    }
+
+    &--range &__element {
+        @include rem(height, .6rem);
+        background: gainsboro;
+        border: 0;
+    }
+
+    &--range &__current {
+        @include rem(margin-top, 2.5rem);
+    }
+
+}

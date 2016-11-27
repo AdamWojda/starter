@@ -1,0 +1,106 @@
+// main: /xampp/htdocs/multiszablon/scss/style.scss
+/*
+* @nazwa Text
+* @sekcja Moduły
+* @opis Kazdy tekst na stronie powinien mieć diva z tą klasą, styluje ona cały tekst wewnątrz
+*
+*/
+
+.m-text {
+
+    ul {
+        padding: 0;
+        margin: 20px 0;
+        position: relative;
+
+        li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+
+            &::before {
+                content: '\f054';
+                color: #6d6d6d;
+                position: absolute;
+                width: 5px;
+                height: 10px;
+                padding-left: 10px;
+                font-size: 9px;
+                font-family: "FontAwesome";
+                margin-top: 2px;
+                -webkit-transition: color 0.2s linear;
+                -moz-transition: color 0.2s linear;
+                -ms-transition: color 0.2s linear;
+                -o-transition: color 0.2s linear;
+                transition: color 0.2s linear;
+                left: -8px;
+            }
+        }
+
+    }
+
+    ol {
+        counter-reset: section;
+        padding: 0;
+        margin: 20px 0;
+
+        li {
+            margin-bottom: 15px;
+
+            &::before {
+                counter-increment: section;
+                content: counters(section,".") " ";
+                font-size: 1.5rem;
+                margin-right: 14px;
+            }
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+
+        }
+    }
+
+    p {
+        margin-bottom: 15px;
+    }
+
+    a {
+        text-decoration: underline;
+
+        &:hover {
+            color: $color-cerulean;
+        }
+    }
+
+    &__first-bg {
+        &::first-letter {
+            @include encodesans(700, 'wide');
+            @include rem(font-size, 2.5rem);
+            padding: 2px 5px;
+            margin: 0 5px 0 0;
+            display: block;
+            background: $color-cerulean;
+            border-radius: 4px;
+            color: $color-white;
+        }
+
+    }
+
+    &__first-color {
+        &::first-letter {
+            @include encodesans(700, 'wide');
+            @include rem(font-size, 2.5rem);
+            padding: 2px 5px;
+            margin: 0 5px 0 0;
+            display: block;
+
+            background: $color-white;
+            border-radius: 4px;
+            color: $color-cerulean;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+// main: /xampp/htdocs/multiszablon/scss/style.scss
+
+/*
+* @nazwa Flagi
+* @sekcja Modules
+* @opis
+*  Wyswietlanie glagi wraz z nazwą, wyorzystane w module zmiany jezyka
+*/
+
+.m-flag {
+    font-size: 0;
+
+    &__icon {
+        @include inline-block();
+        vertical-align: middle;
+        border: 1px solid #ccc;
+        margin-right: 5px;
+        margin-top: 2px;
+    }
+
+    &__name {
+        @include inline-block();
+        @include rem(font-size, 1.1rem);
+        vertical-align: middle;
+    }
+
+}

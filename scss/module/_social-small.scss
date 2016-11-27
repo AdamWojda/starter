@@ -1,0 +1,37 @@
+// main: /xampp/htdocs/multiszablon/scss/style.scss
+
+/*
+* @nazwa Social Icons
+* @sekcja Moduły
+* @opis
+*  Ikonki społecznościowe małe dla nagłowka
+*/
+
+.m-social-small {
+    @include inline-block();
+
+    font-size: 0;
+    vertical-align: middle;
+
+    li {
+        @include inline-block();
+        @include rem(margin-right, 1.6rem);
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+
+    }
+
+    a {
+        @include transition(color .2s linear);
+        @include rem(font-size, 1.6rem);
+        color: $color-sliver-chalice;
+
+        &:hover {
+            color: $color-white;
+        }
+
+    }
+
+}

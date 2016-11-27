@@ -1,0 +1,190 @@
+// main: /xampp/htdocs/multiszablon/scss/style.scss
+
+/*
+* @nazwa Moduł karty z zakupami=
+* @sekcja Moduły
+* @opis
+*  Moduł karty z zakupami, modal wyświetlający się po kliknięciu
+*/
+.m-cart {
+    position: relative;
+
+    &__trigger {
+        @include rem(font-size, 1.7rem);
+        color: $color-sliver-chalice;
+
+        &.is-active,
+        &:hover {
+             color: $color-white;
+        }
+
+    }
+
+    &__hidden {
+        @include rem(font-size, 1.7rem);
+        @include transition(all .5s cubic-bezier(0.19, 1, 0.22, 1));
+
+        text-align: left;
+        position: absolute;
+        top: 100%;
+        right: 3px;
+        width: 322px;
+        background: $color-mine-shaft;
+        z-index: 10;
+        padding: 31px 18px 20px;
+        transform: scale(0);
+        visibility: hidden;
+        opacity: 0;
+
+        &.is-active {
+            visibility: visible;
+            opacity: 1;
+            transform: scale(1);
+            transform-origin: top left;
+        }
+    }
+
+    &__item {
+        margin-right: 0;
+        border-bottom: 1px solid $color-tundora;
+        margin-bottom: 19px;
+        padding-bottom: 16px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__image {
+        @include clearfix();
+
+        img {
+            float: left;
+        }
+
+        figcaption {
+            @include rem(font-size, 1.4rem);
+            @include encodesans(700, 'wide');
+
+            display: block;
+            width: 100%;
+            padding-left: 111px;
+            color: $color-white;
+            letter-spacing: -.2px;
+            line-height: 1.6;
+            position: relative;
+            top: -6px;
+        }
+    }
+
+    &__details {
+
+        @include rem(font-size, 1.4rem);
+
+        margin-top: 22px;
+    }
+
+    &__category {
+        float: left;
+        width: 33%;
+        text-align: right;
+
+        &__item {
+            @include encodesans(400, 'narrow');
+            color: $color-sliver-chalice;
+            display: block;
+            margin-bottom: 16px;
+            margin-right: 0;
+        }
+    }
+
+    &__data {
+        width: 100%;
+        display: block;
+        padding-left: 111px;
+
+        &__item {
+            @include encodesans(400, 'narrow');
+
+            display: block;
+            margin-bottom: 15px;
+            color: $color-white;
+
+            &:last-child {
+                @include encodesans(700, 'wide');
+
+                margin-bottom: 0;
+                letter-spacing: -.4px;
+            }
+
+        }
+
+    }
+
+    &__delete {
+        float: right;
+        margin-top: -20px;
+
+        .fa {
+
+            color: $color-white;
+        }
+
+    }
+
+    &__price {
+        margin-top: 15px;
+
+        &__name {
+            @include encodesans(400, 'narrow');
+            @include rem(font-size, 1.4rem);
+
+            color: $color-white;
+            float: left;
+        }
+
+        &__value {
+            @include encodesans(700, 'wide');
+
+            display: block;
+            width: 100%;
+            padding-left: 100px;
+
+            color: $color-cerulean;
+            text-align: right;
+            font-size: 14px;
+            letter-spacing: -.4px;
+        }
+    }
+
+    &__buttons {
+        margin-top: 22px;
+
+        > .l-container {
+
+            &__half {
+
+                &:nth-child(1) {
+                    text-align: left;
+                    padding-right: 8px;
+                    width: 50%;
+                }
+
+                &:nth-child(2) {
+                    text-align: right;
+                    padding-left: 10px;
+                    width: 50%;
+                }
+
+            }
+
+        }
+
+        a {
+            color: #fff;
+            width: 100%;
+        }
+
+
+    }
+}

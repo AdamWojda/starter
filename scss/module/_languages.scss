@@ -1,0 +1,68 @@
+// main: /xampp/htdocs/multiszablon/scss/style.scss
+
+/*
+* @nazwa Moduł zmiany języka
+* @sekcja Moduły
+* @opis
+*  Moduł zmiany jezyka, modal wyświetlający się po kliknięciu
+*/
+.m-languages {
+
+    position: relative;
+
+    &__trigger {
+        margin-top: 1px;
+        color: $color-sliver-chalice;
+
+        &:hover,
+        &.is-active {
+            color: $color-white;
+        }
+
+    }
+
+    &__hidden {
+        @include transition(top .6s cubic-bezier(0.19, 1, 0.22, 1));
+        z-index: 10;
+        position: absolute;
+        top: 100%;
+        right: 3px;
+        background: #2d2d2d;
+        padding: 20px 15px 10px;
+        width: 130px;
+        visibility: hidden;
+        opacity: 0;
+
+        &.is-active {
+            visibility: visible;
+            opacity: 1;
+
+        }
+
+    }
+
+    &__list {
+        text-align: left;
+    }
+
+    &__item {
+        margin-bottom: 10px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+    }
+
+    .m-flag {
+        &__name {
+
+                    color: $color-sliver-chalice;
+                            &:hover,
+                            &.is-active {
+                                color: $color-white;
+                            }
+        }
+    }
+
+}

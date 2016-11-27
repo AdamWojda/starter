@@ -1,0 +1,51 @@
+// main: /xampp/htdocs/multiszablon/scss/style.scss
+
+/*
+* @nazwa Back to top
+* @sekcja Modules
+* @opis
+*  Button responsible for moving user to top of the page.
+*/
+.m-back-up {
+    $root: &;
+
+    background: $color-cerulean;
+    border: 1px solid #fff;
+
+    display: none;
+    position:fixed;
+    right:30px;
+    bottom: 10px;
+    z-index:99999;
+
+    &:hover {
+        background: $color-mine-shaft;
+    }
+
+    &--text {
+        color: $color-white;
+    }
+
+    &--icon {
+        @include rem(font-size, 1.5rem);
+        color: $color-white;
+
+        .fa {
+            position: relative;
+            top: -2px;
+        }
+
+        &#{$root}--round {
+            @include rem(padding, 1.5rem);
+        }
+    }
+
+    &--round {
+        @include rem(padding, 2rem 2.5rem);
+        border-radius: 10000px;
+    }
+
+    &--square {
+        @include rem(padding, .5rem 1rem);
+    }
+}

@@ -1,0 +1,92 @@
+// main: /xampp/htdocs/multiszablon/scss/style.scss
+
+/*
+* @nazwa Breadcrumbs title
+* @sekcja Moduły
+* @opis
+*  Tytuł strony wraz z nawigacją breadcrumbs
+*/
+
+.m-pagination {
+    $root: &;
+
+    &__first,
+    &__last,
+    &__next,
+    &__prev,
+    &__list {
+        @include inline-block();
+        vertical-align: middle;
+        color: $color-cerulean;
+
+        &:hover {
+            color: $color-mine-shaft;
+        }
+    }
+
+    &__first,
+    &__last,
+    &__next,
+    &__prev {
+        @include rem(font-size, 2.5rem);
+    }
+
+    &__first {
+        margin-right: 10px;
+    }
+
+    &__prev {
+        margin-right: 20px;
+    }
+
+    &__last {
+        margin-left: 10px;
+    }
+
+    &__next {
+        margin-left: 20px;
+    }
+
+    &__list {
+
+        &__element {
+            @include inline-block();
+            @include transition(all .2s linear);
+            margin-right:5px;
+
+            vertical-align: middle;
+            border: 2px solid $color-cerulean;
+            border-radius: 4px;
+            text-align: center;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &:hover {
+                background: $color-mine-shaft;
+                color: $color-white;
+                border-color: $color-mine-shaft;
+
+                #{$root}__link {
+                    color: $color-white;
+                }
+
+            }
+
+
+        }
+
+    }
+
+    &__link {
+        @include rem(padding, 1rem 1.3rem);
+        display: block;
+        color: $color-cerulean;
+
+        &:hover {
+            color: $color-white;
+        }
+    }
+
+}

@@ -1,0 +1,30 @@
+// main: /xampp/htdocs/multiszablon/scss/style.scss
+/*
+* @nazwa Widgety
+* @sekcja Layouty
+* @opis
+*  Layouty dla widgetow w sidebarze
+*/
+.l-widget {
+    margin-bottom: 50px;
+
+    &__title {
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: 41px;
+        text-transform: uppercase;
+
+        &::after {
+            content: "";
+            width: 55px;
+            height: 3px;
+            background: $color-cerulean;
+            position: absolute;
+            left: -2px;
+            bottom: 0;
+            z-index: 1;
+        }
+
+    }
+
+}

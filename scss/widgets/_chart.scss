@@ -1,0 +1,19 @@
+// main: /xampp/htdocs/multiszablon/scss/style.scss
+/*
+* @nazwa Karta z zakupami
+* @sekcja Widgety
+* @opis
+*  Karta z zakupami jako widget
+*/
+
+.w-chart {
+
+    .m-cart__category__item,
+    .m-cart__data__item,
+    .m-cart__image figcaption  {
+        color: $color-mine-shaft;
+    }
+
+
+
+}

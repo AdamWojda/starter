@@ -1,0 +1,27 @@
+// main: /xampp/htdocs/multiszablon/scss/style.scss
+
+/*
+* @nazwa Breadcrumbs title
+* @sekcja Moduły
+* @opis
+*  Tytuł strony wraz z nawigacją breadcrumbs
+*/
+.m-top-title {
+    @include rem(min-height, 9.4rem);
+
+    background: #f3f3f3 url(../img/breadcrumbs-bg.png) repeat-x top left;
+
+    .m-title {
+        @include rem(padding, 3.5rem 0 1.2rem);
+        letter-spacing: .4px;
+    }
+
+    .m-menu--breadcrumbs {
+        @include rem(padding-bottom, .7rem);
+    }
+
+    &--text .m-title {
+        @include rem(padding, 2.7rem 0 .5rem);
+    }
+
+}

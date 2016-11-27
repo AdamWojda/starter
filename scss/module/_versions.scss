@@ -1,0 +1,97 @@
+// main: /xampp/htdocs/multiszablon/scss/style.scss
+
+/*
+* @nazwa Moduł zmiany koloru
+* @sekcja Moduły
+* @opis
+*  Moduł zmiany koloru strony, zmiany czionki, modal otwierany po kliknięciu
+*/
+.m-versions {
+
+    &__trigger {
+        @include rem(font-size, 1.7rem);
+        color: $color-sliver-chalice;
+
+        &.is-active,
+        &:hover {
+            color: $color-white;
+        }
+    }
+
+    &__modal {
+        @include transition(all .4s linear);
+        padding: 0;
+        background: $color-turbo;
+        height: 0;
+        overflow: hidden;
+        z-index: 10;
+
+        &--enabled {
+        background: $color-turbo;
+                height: auto;
+                padding: 2rem 0;
+                position: fixed;
+                width: 100%;
+                bottom: 0;
+                z-index: 999;
+        }
+    }
+    &__modal--enabled.is-inactive {
+        display: none;
+    }
+    &__modal--enabled &__modal__close {
+        float: right;
+    margin-top: 9px;
+    }
+
+    &__modal--enabled .m-modal__close {
+        background: none;
+        color: #000;
+        border: 0;
+    }
+
+    &__modal.is-active {
+        @include rem(height, 6rem);
+        @include rem(padding, .9rem);
+        overflow: visible;
+        top: 0;
+    }
+
+
+    &__modal .l-container {
+        font-size: 0;
+    }
+
+    &__modal__close {
+        @include inline-block();
+        vertical-align: middle;
+        width: 32.8%;
+        text-align: center;
+    }
+
+    &__modal .m-modal {
+
+        &__close {
+            @include inline-block();
+            @include transition(background .2s linear, color .2s linear);
+            @include rem(font-size, 1.8rem);
+            @include rem(padding, .9rem 1rem 1rem .9rem);
+            border-radius: 4px;
+            border: 2px solid #000;
+            letter-spacing: .1px;
+
+            .fa {
+                @include rem(font-size, 1.8rem);
+                @include rem(margin-right, .3rem);
+            }
+
+            &:hover {
+                background: $color-black;
+                color: $color-white;
+            }
+
+        }
+
+    }
+
+}

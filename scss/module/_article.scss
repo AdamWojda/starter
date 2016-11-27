@@ -1,0 +1,63 @@
+// main: /xampp/htdocs/multiszablon2/scss/style.scss
+
+/* ==================================================================================================== */
+/* List skeleton
+/* ==================================================================================================== */
+
+
+.m-article {
+
+  margin-bottom: 40px;
+  
+  &__body {
+    border: 1px solid $color-alto;
+    border-top: 0;
+    padding: 17px 29px;
+
+    .m-text {
+      margin-top: 18px;
+      max-height: 75px;
+      line-height: 1.6;
+      overflow: hidden;
+
+    }
+
+  }
+
+  &__footer {
+    margin-top: 23px;
+  }
+
+  &__footer {
+    text-align: right;
+  }
+
+  &__thumbnail {
+    display: block;
+  }
+
+  &__title {
+    line-height: 1.4;
+  }
+
+
+  &__list {
+    font-size: 0;
+
+        margin-top: 23px;
+      &__element {
+        @include rem(font-size, 1.3rem);
+        @include inline-block();
+        vertical-align: middle;
+      }
+
+  }
+
+  &__separator {
+    @include inline-block();
+    vertical-align: middle;
+
+  }
+
+
+}

@@ -1,0 +1,50 @@
+// main: /xampp/htdocs/multiszablon/scss/style.scss
+
+//
+// @atom Ipnuts
+// @section Inputs
+// @description
+//  Buttons for various purposes.
+// @markup
+//  <input type="text" class="input" placeholder="Imię i nazwisko" />
+//  <textarea class="input input-textarea" placeholder="Imię i nazwisko"></textarea>
+//  <input type="submit" class="input input-submit" value="Wyślij" />
+//
+
+ .m-input {
+
+    &__text {
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        display: block;
+        padding: 11px;
+     }
+
+    &--half {
+        font-size: 0;
+    }
+
+    &--half &__element {
+        @include inline-block();
+        @include rem(font-size, 1.4rem);
+        @include rem(padding-right, .8rem);
+
+        width: 50%;
+    }
+
+    &--half &__element:nth-of-type(2n+2) {
+        @include rem(padding-left, .8rem);
+        padding-right: 0;
+    }
+
+    &--block-label &__label {
+        display: block;
+        margin-bottom: 10px;
+     }
+
+    &--block-label &__text {
+        margin-top: 10px;
+    }
+
+}

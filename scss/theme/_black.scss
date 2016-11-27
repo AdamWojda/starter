@@ -1,0 +1,22 @@
+// main: /xampp/htdocs/multiszablon/scss/style.scss
+
+/*
+* @nazwa Black
+* @sekcja Themes
+* @opis
+*  Czarna wersja strony
+*/
+
+.t-black {
+
+    .l-header {
+        &__top {
+            background: $color-black;
+        }
+
+        &__bottom {
+            background: $color-black;
+        }
+    }
+
+}

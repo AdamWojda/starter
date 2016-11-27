@@ -1,0 +1,87 @@
+// main: /xampp/htdocs/multiszablon/scss/style.scss
+
+/*
+* @nazwa Theme picker
+* @sekcja Moduły
+* @opis
+*  Lista wyboru koloru strony, wykrozystana w m-versions
+*/
+
+
+.m-theme-picker {
+    $root: &;
+    @include rem(font-size, 1.7rem);
+    @include inline-block();
+    @include rem(padding-left, 2.5rem);
+    vertical-align: middle;
+    text-align: left;
+    width: 18.7%;
+
+    &__list {
+        font-size: 0;
+    }
+
+    &__item {
+        @include encodesans(700, 'wide');
+        @include inline-block();
+        @include rem(margin-right, .8rem);
+        vertical-align: middle;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &--yellow {
+
+            #{$root}__link {
+                background: $color-turbo;
+                color: $color-black;
+            }
+
+        }
+
+        &--yellow-black {
+
+            #{$root}__link {
+                background: $color-black;
+                color: $color-turbo;
+            }
+
+        }
+
+        &--black {
+
+            #{$root}__link {
+                background: $color-black;
+                color: $color-white;
+            }
+
+        }
+
+        &--white {
+
+            #{$root}__link {
+                background: $color-white;
+                color: $color-black;
+            }
+
+        }
+
+    }
+
+    &__link {
+        @include inline-block();
+        @include transition(transform .2s linear);
+        @include rem(font-size, 2.4rem);
+        @include rem(padding, .3rem .9rem .5rem 1rem);
+        border: 2px solid $color-black;
+        border-radius: 4px;
+        font-weight: 900;
+
+        &:hover {
+            @include transform(scale(1.1));
+        }
+
+    }
+
+}
