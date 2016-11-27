@@ -1,12 +1,6 @@
 // main: /xampp/htdocs/multiszablon/scss/style.scss
 
 
-a {
-    @include transition(color .2s linear);
-    text-decoration: none;
-    color: $color-mine-shaft;
-}
-
 ::-moz-selection {
     background: $color-cerulean;
     color: $color-white;
@@ -21,10 +15,6 @@ a {
     @include clearfix();
 }
 
-p {
-    color: $color-mine-shaft;
-    line-height: 1.6;
-}
 
 blockquote {
     @include encodesans(600, 'wide');

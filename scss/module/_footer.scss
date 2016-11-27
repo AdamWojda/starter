@@ -1,27 +1,14 @@
 // main: /xampp/htdocs/multiszablon/scss/style.scss
 
+/*
+* @name Footer
+* @section Modules
+* @description
+*  Footer, and footer content.
+*/
 
 .m-footer {
     $root: &;
-    @include rem(padding, 3rem 0);
-    background: $color-mine-shaft;
-    color: $color-sliver-chalice;
 
-    .m-short-info {
-        a {
-            @include rem(font-size, 1.5rem);
-            color: $color-sliver-chalice;
 
-            &:hover {
-                color: $color-white;
-            }
-        }
-
-    }
-
-    .m-title {
-        &--line {
-            color: $color-white;
-        }
-    }
 }

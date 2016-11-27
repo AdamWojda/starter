@@ -1,4 +1,13 @@
 // main: /xampp/htdocs/multiszablon/scss/style.scss
+
+/*
+* @name Breadcrumb
+* @section Modules
+* @description
+*  All breadcrumbs navigations
+*/
+
 .breadcrumb {
+    $root: &;
 
 }

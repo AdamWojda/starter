@@ -1,54 +1,17 @@
 // main: /xampp/htdocs/multiszablon/scss/style.scss
 
 /*
-* @nazwa Container
-* @sekcja Layouty
-* @opis
-*  Kontenery na stronie
+* @name Container
+* @section Layouts
+* @description
+*  Site conteners
 */
 
 .l-container {
     $root: &;
 
-	@include clearfix;
-	margin: 0 auto;
-	position: relative;
-
-    &__half {
-        @include inline-block;
-        width: 50%;
-    }
-
-    &--half {
-        font-size: 0;
-    }
-
-    [data-width="960"] &--inner {
-        @include rem(max-width, 96rem);
-    }
-
-    [data-width="1024"] &--inner {
-        @include rem(max-width, 102.4rem);
-    }
-
-    [data-width="1170"] &--inner {
-        @include rem(max-width, 117rem);
-    }
-
-    [data-width="1366"] &--inner {
-        @include rem(max-width, 136.6rem);
-    }
-
-    [data-width="1440"] &--inner {
-        @include rem(max-width, 144rem);
-    }
-
-    [data-width="1600"] &--inner {
-        @include rem(max-width, 160rem);
-    }
-
-    [data-width="1980"] &--inner {
-        @include rem(max-width, 198rem);
-    }
+  	@include clearfix;
+  	margin: 0 auto;
+  	position: relative;
 
 }

@@ -1,106 +1,13 @@
 // main: /xampp/htdocs/multiszablon/scss/style.scss
 
 /*
-* @nazwa Headings
-* @sekcja Moduły
-* @opis
-*  Wszystkie nagłowki na stronie
+* @name Headings
+* @section Components
+* @description
+*  Site headings
 */
 
 .m-title {
-
-    &--theme-h1 {
-        @include rem(font-size, 3.5rem);
-        @include encodesans(700, 'wide');
-    }
-
-    &--theme-h2 {
-        @include rem(font-size, 3.3rem);
-        @include encodesans(400, 'wide');
-
-    }
-
-    &--theme-h3 {
-        @include rem(font-size, 2.7rem);
-        @include encodesans(700, 'wide');
-
-    }
-
-    &--theme-h4 {
-        @include rem(font-size, 2.5rem);
-        @include encodesans(400, 'wide');
-    }
-
-    &--theme-h5 {
-        @include rem(font-size, 2rem);
-        @include encodesans(700, 'wide');
-
-    }
-
-    &--theme-h6 {
-        @include rem(font-size, 1.5rem);
-        @include encodesans(700, 'wide');
-    }
-
-    &--size-medium {
-        @include rem(font-size, 2.4rem);
-    }
-
-    &--size-small {
-        @include rem(font-size, 1.7rem);
-    }
-
-
-    &--font-thin {
-        @include encodesans(100, 'wide');
-    }
-
-    &--font-extralight {
-        @include encodesans(200, 'wide');
-    }
-
-    &--font-light {
-        @include encodesans(300, 'wide');
-    }
-
-    &--font-regular {
-        @include encodesans(400, 'wide');
-    }
-
-    &--font-medium {
-        @include encodesans(500, 'wide');
-    }
-
-    &--font-semibold {
-        @include encodesans(600, 'wide');
-    }
-
-    &--font-bold {
-        @include encodesans(700, 'wide');
-    }
-
-    &--font-extrabold {
-        @include encodesans(800, 'wide');
-    }
-
-    &--line {
-        font-family: 'EncodeSansWide-bold';
-        position: relative;
-        padding-bottom: 15px;
-        margin-bottom: 41px;
-        text-transform: uppercase;
-
-        &::after {
-            content: "";
-            width: 55px;
-            height: 3px;
-            background: #0094e0;
-            position: absolute;
-            left: -2px;
-            bottom: 0;
-            z-index: 1;
-        }
-    }
 
     &--center {
         text-align: center;

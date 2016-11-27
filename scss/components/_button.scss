@@ -1,114 +1,13 @@
 // main: /xampp/htdocs/multiszablon/scss/style.scss
 
 /*
-* @nazwa Przyciski
-* @sekcja Modules
-* @opis
-*  Wszystkie wersje przyciskow na stronie.
+* @name Buttons
+* @section Components
+* @description
+*  All buttons.
 */
 
 .m-button {
     $root: &;
-    text-align: center;
-    border-radius: 3px;
-
-    .m-icon  {
-        @include rem(margin-right, .5rem);
-        vertical-align: middle;
-    }
-
-    &--small {
-        @include inline-block();
-        @include rem(font-size, 1.2rem);
-        @include rem(padding, .7rem 2.5rem .8rem);
-
-        .m-icon {
-            @include rem(font-size, 1.2rem);
-        }
-
-    }
-
-    &--medium {
-        @include inline-block();
-        @include rem(font-size, 1.8rem);
-        @include rem(padding, 1rem 4rem 1.4rem);
-
-        .m-icon {
-            @include rem(font-size, 2.2rem);
-        }
-
-    }
-
-    &--big {
-        @include inline-block();
-        @include rem(font-size, 2.1rem);
-        @include rem(padding, 1.7rem 4.3rem 2rem);
-
-        .m-icon {
-            @include rem(font-size, 2.9rem);
-        }
-
-    }
-
-    &--tag {
-        @include inline-block();
-        @include rem(font-size, 1.2rem);
-        @include rem(padding, .3rem 2rem .4rem);
-    }
-
-    &--blue {
-        @include transition(background .25s linear);
-        background: $color-cerulean;
-        color: $color-white;
-
-        &:hover,
-        &.is-active {
-            background: $color-mine-shaft;
-        }
-    }
-
-    &--blue-border {
-        @include transition(all .25s linear);
-        background: transparent;
-        border: 2px solid $color-cerulean;
-        color: $color-cerulean;
-
-        &:hover,
-        &.is-active {
-            color: $color-white;
-            border-color: $color-mine-shaft;
-            background: $color-mine-shaft;
-        }
-
-    }
-
-    &--round {
-        border-radius: 10000px;
-
-        &#{$root}--small {
-            @include rem(padding, 1rem 1.2rem);
-        }
-
-        &#{$root}--medium {
-            @include rem(padding, 2rem 2.3rem);
-        }
-
-        &#{$root}--big {
-            @include rem(padding, 3rem 3.5rem);
-        }
-
-        .m-icon {
-            margin-right: 0;
-        }
-    }
-
-
-    &--icon {
-
-        .m-icon {
-            margin-right: 0;
-        }
-
-    }
 
 }

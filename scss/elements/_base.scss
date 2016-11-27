@@ -2,23 +2,22 @@
 
 html {
 	-webkit-font-smoothing: subpixel-antialiased;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 62.5%;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+  font-size: 62.5%;
 }
 
 body {
     overflow-x: hidden;
-    @include encodesans();
     @include rem(font-size, 1.4rem);
-    color: $color-mine-shaft;
 }
 
 main {
-    @include rem(margin-bottom, 7rem);
+
 }
+
 strong {
-	@include encodesans(600, 'wide');
+
 }
 
 input:-webkit-autofill {

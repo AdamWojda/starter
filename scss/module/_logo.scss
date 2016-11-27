@@ -1,19 +1,13 @@
 // main: /xampp/htdocs/multiszablon/scss/style.scss
 
-/* ==================================================================================================== */
-/* logo module
-/* ==================================================================================================== */
+/*
+* @name Logo
+* @section Modules
+* @description
+*  Logos in header or footer or anywhere
+*/
+
 .m-logo {
     $root: &;
-
-    &__image {
-        @include transition(all .25s linear);
-        max-width: 100%;
-    }
-
-    &--gray {
-        -webkit-filter: grayscale(100%);
-        filter: grayscale(100%);
-    }
 
 }
