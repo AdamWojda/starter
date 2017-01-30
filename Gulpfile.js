@@ -103,7 +103,7 @@ gulp.task('js-watch', ['bower_javascript','bower_final_css'], function (done) {
     done();
 });
 
-gulp.task('serve', ['bower_javascript','bower_final_css'], function () {
+gulp.task('serve', ['bower_javascript','bower_final_css', 'minify_images', 'watch'], function () {
 
     bs.init({
         server: {
@@ -116,12 +116,18 @@ gulp.task('serve', ['bower_javascript','bower_final_css'], function () {
         'css/**/*.css',
         'scss/**/*.scss',
     ], ['js-watch']);
-    
+
 });
 
-gulp.task('watch', ['serve'], function() {
+gulp.task('watch', function() {
 
     gulp.watch("*.html").on('change', bs.reload);
+
+    gulp.watch([
+        'js/**/*.js',
+        'css/**/*.css',
+        'scss/**/*.scss',
+    ], ['js-watch']);
 
     gulp.watch([
         'js/external/*.js',
