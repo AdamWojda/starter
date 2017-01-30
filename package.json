@@ -1,7 +1,7 @@
 {
-  "name": "web-dev-challange-24",
+  "name": "adamw-wojda-starter",
   "version": "1.0.0",
-  "description": "My solution to weekly web dev challange.\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D latest (24) weekly web dev challange\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D, weekly web dev challange",
+  "description": "Starter for every project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,10 +11,7 @@
     "url": "git+https://github.com/AdamWojda/24_web_dev_chalange.git"
   },
   "keywords": [
-    "weekly",
-    "web",
-    "dev",
-    "challange"
+    "starter"
   ],
   "author": "Adam Wojda",
   "license": "ISC",
@@ -23,14 +20,25 @@
   },
   "homepage": "https://github.com/AdamWojda/24_web_dev_chalange#readme",
   "devDependencies": {
+    "bower": "^1.8.0",
+    "browser-sync": "^2.18.6",
     "gulp": "^3.9.1",
+    "gulp-add-src": "^0.2.0",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-concat": "^2.6.1",
+    "gulp-filter": "^5.0.0",
     "gulp-imagemin": "^3.1.1",
+    "gulp-jslint": "^1.0.10",
     "gulp-kraken": "^0.2.0",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-main-bower-files": "^1.6.1",
+    "gulp-notify": "^3.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
+    "gulp-size": "^2.1.0",
     "gulp-uglify": "^2.0.0",
-    "imagemin-pngquant": "^5.0.0"
+    "gulp-uglifycss": "^1.0.6",
+    "imagemin-pngquant": "^5.0.0",
+    "main-bower-files": "^2.13.1"
   }
 }

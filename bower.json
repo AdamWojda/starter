@@ -1,0 +1,27 @@
+{
+  "name": "adamw-wojda-starter",
+  "description": "Starter for every project",
+  "main": "index.js",
+  "authors": [
+    "Adam Wojda"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "starter"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "owl.carousel": "owl-carousel2#^2.2.0",
+    "font-awesome": "Font-Awesome#^4.7.0",
+    "mocha": "^3.2.0"
+  }
+}
