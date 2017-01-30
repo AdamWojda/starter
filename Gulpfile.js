@@ -13,16 +13,10 @@ var gulp         = require('gulp'),
     bowerFiles   = require('gulp-main-bower-files'),
     jslint       = require('gulp-jslint'),
     size         = require('gulp-size'),
+    plumber      = require('gulp-plumber'),
     pngquant     = require('imagemin-pngquant'),
     bs           = require('browser-sync').create();
 
-    gulp.task('browser-sync', function() {
-        bs.init({
-            server: {
-                baseDir: "./"
-            }
-        });
-    });
 
 gulp.task('minify_images', function() {
 
@@ -41,6 +35,7 @@ gulp.task('minify_images', function() {
 gulp.task('bower_javascript', function() {
     var s = size();
     return gulp.src('./bower.json')
+        .pipe(plumber())
         .pipe(bowerFiles())
         .pipe(filter('**/*.js'))
         .pipe(addSrc('js/external/*.js'))
@@ -49,7 +44,7 @@ gulp.task('bower_javascript', function() {
         .pipe(s)
         .pipe(concat('app.js'))
         .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('./js'))
+        .pipe(gulp.dest('./dist'))
         .pipe(bs.stream())
         .pipe(bs.reload({stream: true}))
         .pipe(notify({
@@ -63,6 +58,7 @@ gulp.task('bower_final_css', function() {
 
     var s = size();
     return gulp.src('./bower.json')
+        .pipe(plumber())
         .pipe(bowerFiles())
         .pipe(filter('**/*.css'))
         .pipe(addSrc('css/external/**/*.css'))
@@ -73,7 +69,7 @@ gulp.task('bower_final_css', function() {
         .pipe(s)
         .pipe(concat('style.css'))
         .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('./css'))
+        .pipe(gulp.dest('./dist'))
         .pipe(bs.stream())
         .pipe(bs.reload({stream: true}))
         .pipe(notify({
@@ -87,6 +83,7 @@ gulp.task('bower_final_css', function() {
 gulp.task('bower_full_css', function() {
 
     return gulp.src('./bower.json')
+        .pipe(plumber())
         .pipe(bowerFiles())
         .pipe(filter('**/*.css'))
         .pipe(addSrc('css/external/**/*.css'))
@@ -95,7 +92,7 @@ gulp.task('bower_full_css', function() {
         .pipe(autoprefixer('last 10 versions', 'ie 9'))
         .pipe(concat('style.css'))
         .pipe(rename({ suffix: '.full' }))
-        .pipe(gulp.dest('./css'))
+        .pipe(gulp.dest('./dist'))
         .pipe(bs.reload({stream: true}));
 
 });
@@ -108,44 +105,34 @@ gulp.task('js-watch', ['bower_javascript','bower_final_css'], function (done) {
 
 gulp.task('serve', ['bower_javascript','bower_final_css'], function () {
 
-    // Serve files from the root of this project
     bs.init({
         server: {
             baseDir: "./"
         }
     });
 
-    // add bs.reload to the tasks array to make
-    // all browsers reload after tasks are complete.
     gulp.watch([
         'js/**/*.js',
-        '!js/app.min.js',
         'css/**/*.css',
         'scss/**/*.scss',
-        '!css/style.css',
-        '!css/style.min.css'
     ], ['js-watch']);
+    
 });
 
-gulp.task('watch_build', ['browser-sync'], function() {
+gulp.task('watch', ['serve'], function() {
 
     gulp.watch("*.html").on('change', bs.reload);
 
     gulp.watch([
         'js/external/*.js',
         'js/**/*.js',
-        '!js/app.min.js',
-        '/bower.json',
         'bower_components/**'
     ], ['bower_javascript']);
 
     gulp.watch([
         'bower_components/**',
-        '/bower.json',
         'css/external/**/*.css',
         'scss/**/*.scss',
-        '!css/style.css',
-        '!css/style.min.css'
     ], ['bower_full_css', 'bower_final_css']);
 
 
