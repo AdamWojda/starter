@@ -18,6 +18,55 @@ var gulp         = require('gulp'),
     bs           = require('browser-sync').create();
 
 
+var path = {
+
+    base: './',
+
+    src: {
+        html: 'src/*.html',
+        js: 'src/js/main.js',
+        style: 'src/style/main.scss',
+        img: 'src/img/**/*.*',
+        fonts: 'src/fonts/**/*.*'
+    },
+
+    watch: {
+        js: 'js/**/*.js',
+        css: 'css/external/**/*.css',
+        scss: 'scss/**/*.scss',
+        html: '*.html',
+        img: 'img/**/*.*',
+        fonts: 'fonts/**/*.*',
+        bower: 'bower_components/**/*.*'
+    },
+
+    exclude: {
+        mainCss: '!css/style.css',
+        minifiedCss: '!css/style.min.css',
+        mainJs: '!js/app.js',
+        minifiedJs: '!js/app.min.js'
+    }
+};
+
+var reportError = function(error) {
+   var report     = '';
+   var chalk      = gutil.colors.bold.red;
+   var longpath   = error.file;
+   var shortpath  = longpath.split('themes').slice(-1);
+   var longerror  = error.message;
+   var shorterror = longerror.split('  ').pop();
+
+   report += '\n';
+   report += chalk('--- GULP ERROR -----------------------------------------------------------------') + '\n';
+   report += chalk('Task: ') + error.plugin + '\n';
+   report += chalk('File: ') + shortpath + '\n';
+   report += chalk(error.line + '/' + error.column + ': ') + shorterror + '\n';
+   report += chalk('--------------------------------------------------------------------------------') + '\n';
+   console.error(report);
+
+   this.emit('end');
+ }
+
 gulp.task('minify_images', function() {
 
     return gulp.src('img/*')
@@ -35,7 +84,9 @@ gulp.task('minify_images', function() {
 gulp.task('bower_javascript', function() {
     var s = size();
     return gulp.src('./bower.json')
-        .pipe(plumber())
+        .pipe(plumber({
+            'errorHandler': reportError
+         }))
         .pipe(bowerFiles())
         .pipe(filter('**/*.js'))
         .pipe(addSrc('js/external/*.js'))
@@ -44,13 +95,36 @@ gulp.task('bower_javascript', function() {
         .pipe(s)
         .pipe(concat('app.js'))
         .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('./dist'))
-        .pipe(bs.stream())
+        .pipe(gulp.dest('./js'))
         .pipe(bs.reload({stream: true}))
         .pipe(notify({
             onLast: true,
             message: () => `JS DONE ║║ File size ${s.prettySize}`
         }));
+
+        bs.reload();
+        done();
+
+});
+
+gulp.task('bower_full_javascript', function() {
+    var s = size();
+    return gulp.src('./bower.json')
+        .pipe(plumber({
+            'errorHandler': reportError
+         }))
+        .pipe(bowerFiles())
+        .pipe(filter('**/*.js'))
+        .pipe(addSrc('js/external/*.js'))
+        .pipe(addSrc('js/scripts.js'))
+        .pipe(s)
+        .pipe(concat('app.js'))
+        .pipe(rename({ suffix: '' }))
+        .pipe(gulp.dest('./js'))
+        .pipe(bs.reload({stream: true}));
+
+        bs.reload();
+        done();
 });
 
 gulp.task('bower_final_css', function() {
@@ -58,7 +132,9 @@ gulp.task('bower_final_css', function() {
 
     var s = size();
     return gulp.src('./bower.json')
-        .pipe(plumber())
+        .pipe(plumber({
+            'errorHandler': reportError
+         }))
         .pipe(bowerFiles())
         .pipe(filter('**/*.css'))
         .pipe(addSrc('css/external/**/*.css'))
@@ -69,13 +145,14 @@ gulp.task('bower_final_css', function() {
         .pipe(s)
         .pipe(concat('style.css'))
         .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('./dist'))
-        .pipe(bs.stream())
-        .pipe(bs.reload({stream: true}))
+        .pipe(gulp.dest('./css'))
         .pipe(notify({
             onLast: true,
             message: () => `CSS DONE ║║ File size ${s.prettySize}`
         }));
+
+        bs.reload();
+        done();
 
 
 });
@@ -83,7 +160,9 @@ gulp.task('bower_final_css', function() {
 gulp.task('bower_full_css', function() {
 
     return gulp.src('./bower.json')
-        .pipe(plumber())
+        .pipe(plumber({
+            'errorHandler': reportError
+         }))
         .pipe(bowerFiles())
         .pipe(filter('**/*.css'))
         .pipe(addSrc('css/external/**/*.css'))
@@ -91,54 +170,63 @@ gulp.task('bower_full_css', function() {
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(autoprefixer('last 10 versions', 'ie 9'))
         .pipe(concat('style.css'))
-        .pipe(rename({ suffix: '.full' }))
-        .pipe(gulp.dest('./dist'))
+        .pipe(rename({ suffix: '' }))
+        .pipe(gulp.dest('./css'))
         .pipe(bs.reload({stream: true}));
 
+
+        bs.reload();
+        done();
+
 });
 
 
-gulp.task('js-watch', ['bower_javascript','bower_final_css'], function (done) {
-    bs.reload();
-    done();
-});
+// gulp.task('js-watch', ['bower_javascript','bower_full_javascript','bower_final_css'], function (done) {
+//     bs.reload();
+//     done();
+// });
+//
+// gulp.task('serve', ['bower_javascript','bower_full_javascript','bower_final_css', 'minify_images', 'watch'], function () {
+//
+//     bs.init({
+//         server: {
+//             baseDir: path.base
+//         }
+//     });
+//
+//     gulp.watch([
+//         path.watch.js,
+//         path.watch.css,
+//         path.watch.scss,
+//         path.exclude.mainCss,
+//         path.exclude.minifiedCss,
+//     ], ['js-watch']);
+//
+// });
 
-gulp.task('serve', ['bower_javascript','bower_final_css', 'minify_images', 'watch'], function () {
+gulp.task('watch', function() {
+
+    gulp.watch(path.watch.html).on('change', bs.reload);
 
     bs.init({
         server: {
-            baseDir: "./"
+            baseDir: path.base
         }
     });
 
     gulp.watch([
-        'js/**/*.js',
-        'css/**/*.css',
-        'scss/**/*.scss',
-    ], ['js-watch']);
-
-});
-
-gulp.task('watch', function() {
-
-    gulp.watch("*.html").on('change', bs.reload);
+        path.watch.js,
+        path.watch.bower,
+        path.exclude.mainJs,
+        path.exclude.minifiedJs,
+    ], ['bower_javascript','bower_full_javascript']);
 
     gulp.watch([
-        'js/**/*.js',
-        'css/**/*.css',
-        'scss/**/*.scss',
-    ], ['js-watch']);
-
-    gulp.watch([
-        'js/external/*.js',
-        'js/**/*.js',
-        'bower_components/**'
-    ], ['bower_javascript']);
-
-    gulp.watch([
-        'bower_components/**',
-        'css/external/**/*.css',
-        'scss/**/*.scss',
+        path.watch.bower,
+        path.watch.scss,
+        path.watch.css,
+        path.exclude.mainCss,
+        path.exclude.minifiedCss,
     ], ['bower_full_css', 'bower_final_css']);
 
 
